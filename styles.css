@@ -1,0 +1,15 @@
+/* Brown background for the rest of the page */
+body {
+    margin: 15px 300px;
+    text-align: center;
+    box-shadow: 10px 10px 10px 10px black;
+    background-color: brown;
+}
+
+/* Applies beige color to the background of the box*/
+.Facts{
+    background-color: beige;
+    border: solid 2px black;
+    padding-bottom: 3%;
+    height: 80vh;
+}  
