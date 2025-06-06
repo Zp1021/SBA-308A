@@ -28,3 +28,6 @@ caused by misunderstanding of the JavaScript event loop (such as race conditions
 
 11. Level of effort displayed in creativity, presentation, and user experience.
 */
+
+
+export let url = "https://pokeapi.co/api/v2/pokemon/"

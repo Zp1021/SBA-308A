@@ -28,11 +28,14 @@ caused by misunderstanding of the JavaScript event loop (such as race conditions
 
 11. Level of effort displayed in creativity, presentation, and user experience.
 */
+
+import { url } from "./url.js";
+
+
 let showCase = document.getElementById("showCase");
 async function initialLoad() {
-    
     try {
-        let response = await axios.get("https://pokeapi.co/api/v2/pokemon/");
+        let response = await axios.get(url);
         let poke = response.data;
         console.log(response)
         showCase.innerText = poke.results[0].name
