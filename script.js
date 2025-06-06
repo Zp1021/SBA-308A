@@ -31,20 +31,24 @@ caused by misunderstanding of the JavaScript event loop (such as race conditions
 
 import { url } from "./url.js";
 import { random } from "./random.js";
-
 let showCase = document.getElementById("showCase");
-async function initialLoad() {
+let button = document.getElementById("nextBtn")
+
+
+button.addEventListener("click", async function initialLoad() {
     try {
         let response = await axios.get(url);
         let poke = response.data;
-        console.log(response)
         let length = poke.results.length
-        showCase.innerText = poke.results[random(length)].name
+        
+            showCase.innerText = poke.results[random(length)].name
+        
+        console.log(showCase.innerText)
         
     } catch (error) {
         console.log(error)
     }
     
-}
-initialLoad()
+})
+// initialLoad()
 
