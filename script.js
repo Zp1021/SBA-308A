@@ -30,7 +30,7 @@ caused by misunderstanding of the JavaScript event loop (such as race conditions
 */
 
 import { url } from "./url.js";
-
+import { random } from "./random.js";
 
 let showCase = document.getElementById("showCase");
 async function initialLoad() {
@@ -38,13 +38,13 @@ async function initialLoad() {
         let response = await axios.get(url);
         let poke = response.data;
         console.log(response)
-        showCase.innerText = poke.results[0].name
-        // for (pokemon of poke.data) {
-            
-        // }
+        let length = poke.results.length
+        showCase.innerText = poke.results[random(length)].name
+        
     } catch (error) {
         console.log(error)
     }
     
 }
 initialLoad()
+
