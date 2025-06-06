@@ -9,6 +9,8 @@ let disclaimer = document.getElementById("disclaimer")
 
 // Assigning an event listener to the button for user interaction
 button.addEventListener("click", async function initialLoad() {
+
+    // Wrapping API get methods in a try catch to avoid potential crashing
     try {
         // Assigning the api to a variable with a limit of 151
         // to simulate all of the pokemon in generation 1
@@ -21,7 +23,8 @@ button.addEventListener("click", async function initialLoad() {
         let length = poke.results.length
 
         // Storing the name of all the pokemon in the array
-        let pokemon = poke.results[random(length)].name
+        let mon = poke.results[random(length)]
+        let pokemon = mon.name
 
         // Function to set a 1 second delay
         setTimeout(() => {
