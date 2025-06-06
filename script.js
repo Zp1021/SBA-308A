@@ -40,9 +40,9 @@ button.addEventListener("click", async function initialLoad() {
         let response = await axios.get(url);
         let poke = response.data;
         let length = poke.results.length
-        
+        setTimeout(() =>{ 
             showCase.innerText = poke.results[random(length)].name
-        
+        }, 1000);
         console.log(showCase.innerText)
         
     } catch (error) {
