@@ -1,54 +1,38 @@
-/*
-Requirements:
-1. Use the fetch API or Axios to communicate with an external web API.
-Use the data provided by this API to populate your application’s content and features.
-
-2. Create user interaction with the API through a search feature, paginated gallery, or similar.
-This feature should use GET requests to retrieve associated data.
-
-3. Enable user manipulation of data within the API through the use of POST, PUT, or PATCH requests.
-Ensure your chosen API supports this feature before beginning.
-
-4. Make use of Promises and async/await syntax as appropriate.
-
-5. Organize your JavaScript code into at least three (3) different module files,
-and import functions and data across files as necessary.
-
-6.Ensure the program runs as expected, without any undesired behavior
-caused by misunderstanding of the JavaScript event loop (such as race conditions, API calls being handled out of order, etc.).
-
-7. Create an engaging user experience through the use of HTML and CSS.
-
-8. Ensure that the program runs without errors
-(comment out things that do not work, and explain your blockers - you can still receive partial credit).
-
-9. Commit frequently to the git repository. (10 Commits)
-
-10. Include a README file that contains a description of your application.
-
-11. Level of effort displayed in creativity, presentation, and user experience.
-*/
-
+// Importing neccessary variables/functions for later use
 import { url } from "./url.js";
 import { random } from "./random.js";
+
+// Accessing specific html elements
 let showCase = document.getElementById("showCase");
 let button = document.getElementById("nextBtn")
+let disclaimer = document.getElementById("disclaimer")
 
-
+// Assigning an event listener to the button for user interaction
 button.addEventListener("click", async function initialLoad() {
     try {
-        let response = await axios.get(url);
+        // Assigning the api to a variable with a limit of 151
+        // to simulate all of the pokemon in generation 1
+        let response = await axios.get(url + "?limit=151");
+
+        // Assigning the data of the api to a variable for later access
         let poke = response.data;
+
+        // Storing the length of the array of pokemon
         let length = poke.results.length
-        setTimeout(() =>{ 
-            showCase.innerText = poke.results[random(length)].name
+
+        // Storing the name of all the pokemon in the array
+        let pokemon = poke.results[random(length)].name
+
+        // Function to set a 1 second delay
+        setTimeout(() => {
+            // Making the disclaimer disappear once the button is clicked
+            disclaimer.innerText = ''
+            // Posting the pokemon names(with first letter capitalization) so they're visible on the HTML
+            showCase.innerText = pokemon.charAt(0).toUpperCase() + pokemon.slice(1)
         }, 1000);
-        console.log(showCase.innerText)
-        
+
+        // Catching potential errors that occur in the axios get function
     } catch (error) {
         console.log(error)
     }
-    
 })
-// initialLoad()
-

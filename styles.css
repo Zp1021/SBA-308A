@@ -11,9 +11,19 @@ body {
     background-color: beige;
     border: solid 2px black;
     padding-bottom: 3%;
-    height: 80vh;
+    height: 70vh;
+    font-weight: 900;
+    font-size: 5vh;
 }
 
-#nextButton {
-    width: ;
+/* Increasing the font size for easier visibility  */
+#disclaimer{
+    font-size: 2vh;
+}
+/* Increased button size and font */
+#nextBtn {
+    width: 110vh;
+    height: 5vh;
+    font-weight: 900;
+    font-size: larger;
 }
